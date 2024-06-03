@@ -1,0 +1,291 @@
+<div class="container">
+    <!-- <div class="row mb-5">
+    <div class="col-xs-12 text-center">
+      <h2>Enter your details</h2>
+    </div>
+  </div> -->
+
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="resumeForm" (ngSubmit)="onSubmitForm()">
+
+        <div class="row mb-5">
+            <div class="col-xs-12">
+                <h1 id="pageHeader">
+                    Create Your Professional Resume in 4 Easy Steps
+                </h1>
+            </div>
+        </div>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                            Personal details                             -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <nz-card nzTitle="Step 1 - Enter your details" formGroupName="personalDetails">
+            <div class="row">
+
+                <div class="col-xs-12 info_row">
+                    <nz-alert nzType="info" nzMessage="At ProWrite-AI, user data is never stored. All generation happens in real-time on the front-end, ensuring complete privacy and security of our users' information."></nz-alert>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                    <nz-form-item>
+                        <nz-form-label nzFor="fullName" nzRequired>Full name</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="name" type="text" id="fullName"
+                                placeholder="Enter full name" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                    <nz-form-item>
+                        <nz-form-label nzFor="mobileNo" nzRequired>Mobile No.</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="mobile" type="text" id="mobileNo"
+                                placeholder="Enter your Mobile number" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-4">
+                    <nz-form-item>
+                        <nz-form-label nzFor="email" nzRequired>Email</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="email" type="email" id="email"
+                                placeholder="Enter your email" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <nz-form-item>
+                        <nz-form-label nzFor="address" nzRequired>Address</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="address" type="text" id="address"
+                                placeholder="Street | City | Postcode" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <nz-form-item>
+                        <nz-form-label nzFor="hobbies" nzRequired>Hobbies</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="hobbies" type="text" id="hobbies"
+                                placeholder="Enter your hobbies" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-card>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <nz-divider></nz-divider>
+            </div>
+        </div>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                           Application details                           -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <nz-card nzTitle="Step 2 - Application details" formGroupName="jobDetails">
+            <div class="row">
+
+                <div class="col-xs-12 info_row">
+                    <nz-alert nzType="info" nzMessage="Easily tailor your resume to any job you're applying for. Simply enter the role you're interested in, select your experience level, and add any relevant keywords from the job description. Our AI technology will then generate a personalized skillset and headline to make your resume stand out."></nz-alert>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <nz-form-item>
+                        <nz-form-label nzFor="role" nzRequired>Which Role are you applying for?</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input nz-input formControlName="appliedRole" type="text" id="role"
+                                placeholder="Enter role name" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <nz-form-item>
+                        <nz-form-label nzFor="experience" nzRequired>What is your current experience
+                            level?</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-select formControlName="experienceLevel" nzPlaceHolder="Select your experience level">
+                                <nz-option [nzValue]="item" [nzLabel]="item" *ngFor="let item of expLevels"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <nz-form-item>
+                        <nz-form-label nzFor="keywords">Keywords</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <textarea nz-input formControlName="keywords" type="text" id="keywords" rows="3"
+                                placeholder="Enter any keywords mentioned in the job description."></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </nz-card>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <nz-divider></nz-divider>
+            </div>
+        </div>
+
+
+        <nz-card [nzTitle]="'Step 3 - Education'" formArrayName="education">
+            <div class="row info_row">
+                <div class="col-xs-12">
+                    <nz-alert nzType="info" nzMessage="With the essential skills and headline in place, the next step is to add your education details. Our AI technology will format your education information in a clear and professional manner, showcasing your qualifications and achievements to potential employers."></nz-alert>
+                </div>
+            </div>
+
+            <div class="row repeat_row" *ngFor="let item of educationControl.controls; let i = index" [formGroupName]="i">
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Degree</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input type="text" formControlName="degree" nz-input placeholder="Enter degree name" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>University / College</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input type="text" formControlName="university" nz-input
+                                placeholder="Enter University / College name" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-xs-8 col-md-6 col-lg-4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Duration</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-range-picker formControlName="dates" (ngModelChange)="onChangeEducationDate($event, i)"
+                                id="uniDates" [nzFormat]="'dd MMM yyyy'"></nz-range-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-8 col-lg-8 mt-5">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Relevant course modules</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <textarea type="text" formControlName="relevantModules" nz-input
+                                placeholder="Enter all relevant course modules" rows="3"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="delete_btn">
+                    <button nz-button nzType="primary" nzSize="large" nzDanger (click)="removeEducation(i)"
+                     nzShape="circle"><span nz-icon nzType="delete" nzTheme="fill">
+                    </span></button>
+                </div>  
+
+                <div class="col-xs-12">
+                    <nz-divider></nz-divider>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 mt-5">
+                    <button nz-button nzType="primary" type="button" (click)="onAddEducation()">
+                        Add more
+                    </button>
+                </div>
+            </div>
+        </nz-card>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <nz-divider></nz-divider>
+            </div>
+        </div>
+
+        <nz-card [nzTitle]="'Step 4 - Experience'" formArrayName="experiences">
+
+            <div class="row info_row">
+                <div class="col-xs-12">
+                    <nz-alert nzType="info" nzMessage="The final touch to your personalized resume is adding your work experiences, if you have any. Our AI technology will take your experiences and generate key points that showcase your skills and accomplishments, all while formatting the information in a visually appealing and professional manner."></nz-alert>
+                </div>
+            </div>
+        
+            <div class="row repeat_row" *ngFor="let item of experienceControl.controls; let i = index" [formGroupName]="i">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Company name</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input type="text" formControlName="company" nz-input placeholder="Enter company name" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Role</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <input type="text" formControlName="role" nz-input placeholder="Enter role" />
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-xs-8 col-md-6 col-lg-4">
+                    <nz-form-item>
+                        <nz-form-label nzRequired>Duration</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <nz-range-picker formControlName="dates" (ngModelChange)="onChangeExperienceDate($event, i)"
+                                id="dateFilter" [nzFormat]="'dd MMM yyyy'"></nz-range-picker>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="col-xs-12 col-md-8 col-lg-8 mt-5">
+                    <nz-form-item>
+                        <nz-form-label>Technologies / Skills used</nz-form-label>
+                        <nz-form-control nzHasFeedback>
+                            <textarea type="text" formControlName="skillsUsed" nz-input
+                                placeholder="Enter keywords for skills / technologies used." rows="3"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+
+                <div class="delete_btn">
+                    <button nz-button nzType="primary" nzSize="large" nzDanger (click)="removeExperience(i)"
+                     nzShape="circle"><span nz-icon nzType="delete" nzTheme="fill">
+                    </span></button>
+                </div>  
+
+                <div class="col-xs-12">
+                    <nz-divider></nz-divider>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 mt-5">
+                    <button nz-button nzType="primary" type="button" (click)="onAddExperience()">
+                        Add Experience
+                    </button>
+                </div>
+            </div>
+        </nz-card>
+
+        <div class="row mt-5">
+            <div class="col-xs-12 text-center">
+                <button nz-button nzType="primary" nzSize="large" [disabled]="!resumeForm.valid"
+                    [nzLoading]="showLoader">
+                    Generate and Download Resume
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

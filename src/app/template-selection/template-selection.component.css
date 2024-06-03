@@ -1,0 +1,25 @@
+.container {
+    height: 100vh;
+
+}
+
+nz-card.ant-card {
+    /* width: 50% !important;
+    margin: auto; */
+    width: auto !important;
+    text-align: center;
+    height: 99%;
+}
+
+.template-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.template-container div {
+    margin-right: 35px;
+    margin-left: 35px;
+}

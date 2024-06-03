@@ -1,0 +1,19 @@
+<div class="container">
+    <!-- <div class="row"> -->
+        <div class="col-xs-12 mb-5">
+            <h1 id="pageHeader">Select a Template</h1>
+            <nz-alert nzType="info" nzMessage="Find the perfect fit for your unique career journey. Select a template that showcases your personality and accomplishments"></nz-alert>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 mb-5 mt-5" *ngFor="let item of templates;" (click)="onSelectTemplate(item)">
+                <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate" data-aos="fade-up" data-aos-duration="2000">
+                    <nz-card-meta [nzTitle]="item.name"></nz-card-meta>
+                  </nz-card>
+                  <ng-template #coverTemplate>
+                    <img [alt]="item.name" [src]="item.imgSrc" />
+                  </ng-template>
+            </div>
+        </div>
+    <!-- </div> -->
+</div>

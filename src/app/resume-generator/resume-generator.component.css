@@ -1,0 +1,16 @@
+#add-btn {
+    margin-top: 6px;
+}
+
+.container {
+    /* background-color: #1e2228; */
+}
+
+.repeat_row {
+    position: relative;
+}
+
+.delete_btn {
+    position: absolute;
+    right: 16px;
+}
